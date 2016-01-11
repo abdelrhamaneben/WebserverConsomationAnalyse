@@ -1,0 +1,51 @@
+<html>
+<head></head>
+<body>
+  <h2>LOG</h2>
+  <div id="log">
+
+  </div>
+  <script>
+  function simpleHttpRequest(url, succes, echec) {
+  var requete = makeHttpObject();
+  requete.open("GET", url, true);
+  requete.send(null);
+  requete.onreadystatechange = function() {
+    if (requete.readyState == 4) {
+      if (requete.status == 200)
+        succes(requete.responseText,1);
+      else if (echec)
+        echec(requete.statusText, 0);
+    }
+  };
+  }
+
+
+  function printer(str,status) {
+  /*  var para = document.createElement("span");
+    var node = document.createTextNode(status);
+    para.appendChild(node);
+    var element = document.getElementById("log");
+    element.appendChild(para);*/
+    console.log(status);
+  }
+
+  function makeHttpObject() {
+  try {return new XMLHttpRequest();}
+  catch (erreur) {}
+  try {return new ActiveXObject("Msxml2.XMLHTTP");}
+  catch (erreur) {}
+  try {return new ActiveXObject("Microsoft.XMLHTTP");}
+  catch (erreur) {}
+
+  throw new Error("La création de l’objet pour les requêtes HTTP n’a pas pu avoir lieu.");
+}
+var i = 0;
+while(i < 1000) {
+  simpleHttpRequest("http://localhost:8080/app2/toto", printer);
+  i++;
+}
+
+</script>
+</body>
+</html>

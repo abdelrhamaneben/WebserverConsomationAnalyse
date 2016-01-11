@@ -1,0 +1,19 @@
+{
+  "name": "appnodejs",
+  "private": true,
+  "version": "0.0.1",
+  "description": "APP REFERENCE PERF NODEJS",
+  "keywords": [],
+  "dependencies": {
+    "express": "4.13.3",
+    "ejs": "2.3.4",
+    "cluster": "0.7.7"
+  },
+  "scripts": {
+    "debug": "node debug app.js",
+    "start": "node app.js"
+  },
+  "main": "app.js",
+  "author": "Abdelrhamane BENHAMMOU",
+  "license": ""
+}
